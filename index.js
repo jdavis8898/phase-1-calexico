@@ -17,14 +17,14 @@ function menu(foods)
     newCartForm.addEventListener("submit", (event) => {
         event.preventDefault()
 
-        const addToCartAmountElement = document.getElementById("cart-amount")
-        let addToCartAmountValue = parseInt(addToCartAmountElement.value)
-
-
         const numberInCartElement = document.getElementById("number-in-cart")
-        let previousCartAmount = parseInt(numberInCartElement.textContent)
-        let updatedCartAmount = addToCartAmountValue + previousCartAmount
-        numberInCartElement.textContent = updatedCartAmount
+        let numberInCartValue = parseInt(numberInCartElement.textContent)
+        
+        const cartAmountElement = document.getElementById("cart-amount")
+        let numberToAddToCart = parseInt(cartAmountElement.value)
+        
+        let newCartAmount = numberInCartValue + numberToAddToCart
+        numberInCartElement.textContent = newCartAmount
 
         newCartForm.reset()
     })
@@ -49,4 +49,7 @@ function displayMainFoodItem(food)
     const dishPrice = food.price
     const priceElement = document.getElementById("dish-price")
     priceElement.textContent = "$" + dishPrice
+
+    const numberInCartElement = document.getElementById("number-in-cart")
+    numberInCartElement.textContent = 0
 }
