@@ -12,11 +12,24 @@ function addFoodToMenu(foods)
 
         newSpanElement.addEventListener("click", () => displayMainFoodItem(food))
     })
-,
+
+    const newCartForm = document.getElementById("cart-form")
+    newCartForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+
+        const addToCartAmountElement = document.getElementById("cart-amount")
+        let addToCartAmountValue = parseInt(addToCartAmountElement.value)
+
+
+        const numberInCartElement = document.getElementById("number-in-cart")
+        let previousCartAmount = parseInt(numberInCartElement.textContent)
+        let updatedCartAmount = addToCartAmountValue + previousCartAmount
+        numberInCartElement.textContent = updatedCartAmount
+
+        newCartForm.reset()
+    })
+
     displayMainFoodItem(foods[0])
-    
-    // const menuItemsElement = document.getElementById("menu-items")
-    // menuItemsElement.addEventListener("click", console.log("working?"))
 }
 
 function displayMainFoodItem(food)
@@ -36,7 +49,4 @@ function displayMainFoodItem(food)
     const dishPrice = food.price
     const priceElement = document.getElementById("dish-price")
     priceElement.textContent = "$" + dishPrice
-
-    // const menuItemsElement = document.getElementById("menu")
-    // menuItemsElement.addEventListener("click", console.log("working"))
 }
