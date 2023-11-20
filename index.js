@@ -1,8 +1,8 @@
 fetch("http://localhost:3000/menu")
 .then(response => response.json())
-.then(foods => addFoodToMenu(foods))
+.then(foods => menu(foods))
 
-function addFoodToMenu(foods)
+function menu(foods)
 {
     foods.forEach(food => {
         const newSpanElement = document.createElement("span")
